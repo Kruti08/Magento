@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+	<adminhtml_p1_index>
+		<reference name="content">
+			<block type="p1/adminhtml_p1" name="p1" ></block>
+		</reference>
+	</adminhtml_p1_index>
+	<!-- <adminhtml_p1_edit>
+		<reference name="content">
+			<block type="p1/adminhtml_p1_Edit" name="edit" ></block>
+		</reference>
+	</adminhtml_p1_edit> -->
+</layout>
