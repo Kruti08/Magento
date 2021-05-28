@@ -1,0 +1,78 @@
+<form action="" method="POST">
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-cart"><?php echo $this->getHeaderText() ?></h4>
+            <div class="form-buttons"><?php echo $this->getButtonsHtml() ?></div>
+        </div>
+
+
+        <div class="grid" id="order-items_grid">
+            <table cellspacing="0" class="data order-tables">
+                <col width="100" />
+                <col width="100" />
+                <col width="100" />
+                <col width="100" />
+                <col width="100" />
+                <col width="100" />
+
+                <thead>
+                    <tr class="headings">
+                        <th class="no-link"><?php echo $this->helper('order')->__('Id') ?></th>
+                        <th class="no-link"><?php echo $this->helper('order')->__('Product') ?></th>
+                        <th class="no-link"><?php echo $this->helper('order')->__('Price') ?></th>
+                        <th class="no-link"><?php echo $this->helper('order')->__('Qty') ?></th>
+                        <th class="no-link"><?php echo $this->helper('order')->__('Discount') ?></th>
+                        <th class="no-link"><?php echo $this->helper('order')->__('Row Subtotal') ?></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($items = $this->getCart()->getCartItems() as $key => $item) : ?>
+                        <tr>
+                            <td>
+                                <input type="text" name="name" value="<?= $item['cart_item_id'] ?>" id="">
+                            </td>
+                            <td>
+                                <input type="text" name="name" value="<?= $this->getProductName($item['product_id']) ?>" id="">
+                            </td>
+                            <td>
+                                <input type="text" name="price" value="<?= $item['price'] ?>" id="">
+                            </td>
+                            <td>
+                                <input type="text" name="update[quantity]" value="<?= $item['quantity'] ?>" id="">
+                            </td>
+                            <td>
+                                <input type="text" name="update[discount]" value="<?= $item['dicount'] ?>" id="">
+                            </td>
+                            <td>
+                                <input type="text" name="name" id="">
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="a-left" colspan="2"><?php echo $this->helper('sales')->__('Total %d product(s)', count($_items)) ?></td>
+                        <td colspan="2" class="a-right"><?php echo $this->helper('sales')->__('Subtotal:') ?></td>
+                        <td class="price"><strong><?php echo $this->getSubtotal()
+                                                    ?></strong></td>
+                        <td class="price"></td>
+                        <td class="price"></td>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <table cellspacing="0" width="100%">
+            <col width="50%" />
+            <col width="50%" />
+            <tr>
+                <td class="a-right"><?php echo $this->getButtonHtml($this->helper('order')->__('Update Items and Qty\'s'), ''); ?></td>
+            </tr>
+        </table>
+        <br />
+
+    </div>
+    </div>
+</form>
