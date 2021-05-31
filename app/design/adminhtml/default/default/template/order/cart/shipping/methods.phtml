@@ -1,0 +1,23 @@
+<?php $shippingMethod = $this->getAllShippingMethods() ?>
+<form action="<?php echo $this->getUrl('*/Adminhtml_Order_Cart/shippingMethod'); ?>" method="POST">
+    <?php echo $this->getBlockHtml('formkey'); ?>
+    <fieldset class="np">
+        <div class="edit-form" id="order-shipping_address_fields">
+            <div class="content">
+                <div class="hor-scroll">
+                    <table cellspacing="0" class="form-list">
+                        <?php foreach ($shippingMethod as $key => $value) : ?>
+                            <input type="radio" name="shippingMethod" value="<?php echo $value->getId() . '_' . $value->getConfigData('price'); ?>" <?php if ($value->getId() == $this->getShippingMethod()) { echo "checked";  } ?>>
+                            <?php echo $value->getConfigData('name'); ?>
+                            <?php echo ' (' . $value->getConfigData('price') . ' $)'; ?>
+                            <br>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="save">
+            <button class="button" onclick="mage.formSubmit()">Save Shipping Method</button>
+        </div>
+    </fieldset>
+</form>
